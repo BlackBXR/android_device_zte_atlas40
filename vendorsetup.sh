@@ -16,3 +16,4 @@
 
 add_lunch_combo atlas40-userdebug
 add_lunch_combo atlas40-eng
+add_lunch_combo cm_atlas40-userdebug

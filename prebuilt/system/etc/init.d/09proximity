@@ -1,0 +1,6 @@
+#!/system/bin/sh
+# Calibrate ZTE atlas40 proximity sensor at boot
+# Author: KonstaT
+
+chmod 777 /data/misc/prox_data.txt
+/system/bin/prox_cal -c

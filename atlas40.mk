@@ -29,6 +29,6 @@ $(call inherit-product, device/zte/atlas40/device.mk)
 # Set those variables here to overwrite the inherited values.
 PRODUCT_DEVICE := atlas40
 PRODUCT_NAME := cm_atlas40
-PRODUCT_BRAND := zte
-PRODUCT_MODEL := atlas40
-PRODUCT_MANUFACTURER := zte
+PRODUCT_BRAND := ZTE
+PRODUCT_MODEL := ZTE BLADE III
+PRODUCT_MANUFACTURER := ZTE
