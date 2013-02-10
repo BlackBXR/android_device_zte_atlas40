@@ -95,6 +95,9 @@
         <item>7</item>
     </integer-array>
 
+    <!-- Boolean indicating whether Softap requires reloading AP firmware -->
+    <bool name="config_wifiApFirmwareReload">false</bool>
+
     <!-- String containing the apn value for tethering.  May be overriden by secure settings
          TETHER_DUN_APN.  Value is a comma separated series of strings:
          "name,apn,proxy,port,username,password,server,mmsc,mmsproxy,mmsport,mcc,mnc,auth,type"
