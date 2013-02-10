@@ -6,7 +6,6 @@ bin/hci_qcomm_init
 bin/hostapd
 bin/hostapd_cli
 bin/netmgrd
-bin/proximity.init
 bin/qmuxd
 bin/rild
 bin/rmt_storage
