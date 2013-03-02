@@ -21,10 +21,6 @@
      for different hardware and product builds. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- The duration (in milliseconds) that the radio will scan for a signal
-         when there's no network connection. If the scan doesn't timeout, use zero -->
-    <integer name="config_radioScanningTimeout">0</integer>
-
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
@@ -47,44 +43,6 @@
         <item>"bnep\\d"</item>
     </string-array>
 
-    <!-- Max number of Bluetooth tethering connections allowed. If this is
-         updated config_tether_dhcp_range has to be updated appropriately. -->
-    <integer translateable="false" name="config_max_pan_devices">5</integer>
-
-    <!-- Regex of wired ethernet ifaces -->
-    <string translatable="false" name="config_ethernet_iface_regex">eth\\d</string>
-
-    <!-- If the mobile hotspot feature requires provisioning, a package name and class name
-        can be provided to launch a supported application that provisions the devices.
-
-        Example Usage:
-
-        String[] appDetails = getStringArray(R.array.config_mobile_hotspot_provision_app);
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setClassName(appDetails[0], appDetails[1]);
-        startActivityForResult(intent, 0);
-
-        public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-            super.onActivityResult(requestCode, resultCode, intent);
-            if (requestCode == 0) {
-                if (resultCode == Activity.RESULT_OK) {
-                    //Mobile hotspot provisioning successful
-                } else {
-                    //Mobile hotspot provisioning failed
-                }
-            }
-
-        See src/com/android/settings/TetherSettings.java for more details.
-        -->
-    <!-- The first element is the package name and the second element is the class name
-         of the provisioning app -->
-    <string-array translatable="false" name="config_mobile_hotspot_provision_app">
-    <!--
-        <item>com.example.provisioning</item>
-        <item>com.example.provisioning.Activity</item>
-    -->
-    </string-array>
-
 <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
     <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
     <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
@@ -98,12 +56,6 @@
     <!-- Boolean indicating whether Softap requires reloading AP firmware -->
     <bool name="config_wifiApFirmwareReload">false</bool>
 
-    <!-- String containing the apn value for tethering.  May be overriden by secure settings
-         TETHER_DUN_APN.  Value is a comma separated series of strings:
-         "name,apn,proxy,port,username,password,server,mmsc,mmsproxy,mmsport,mcc,mnc,auth,type"
-         note that empty fields can be ommitted: "name,apn,,,,,,,,,310,260,,DUN" -->
-    <string translatable="false" name="config_tether_apndata"></string>
-
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
@@ -111,60 +63,14 @@
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
-    <!-- List of file paths for USB host busses to exclude from USB host support.
-         For example, if the first USB bus on the device is used to communicate
-         with the modem or some other restricted hardware, add "/dev/bus/usb/001/"
-         to this list.  If this is empty, no parts of the host USB bus will be excluded.
-    -->
-    <string-array name="config_usbHostBlacklist">
-    </string-array>
-
-    <!-- Display low battery warning when battery level dips to this value.
-         Also, the battery stats are flushed to disk when we hit this level.  -->
-    <integer name="config_criticalBatteryWarningLevel">4</integer>
-
-    <!-- Display low battery warning when battery level dips to this value -->
-    <!-- Display low battery warning when battery level dips to this value -->
-    <integer name="config_lowBatteryWarningLevel">15</integer>
-
-    <!-- Close low battery warning when battery level reaches this value -->
-    <integer name="config_lowBatteryCloseWarningLevel">20</integer>
-
-    <!-- Default color for notification LED. -->
-    <color name="config_defaultNotificationColor">#ff00ff00</color>
-
-    <!-- Default LED on time for notification LED in milliseconds. -->
-    <integer name="config_defaultNotificationLedOn">500</integer>
-
-    <!-- Default LED off time for notification LED in milliseconds. -->
-    <integer name="config_defaultNotificationLedOff">2000</integer>
-
-    <!-- Default value for led color when battery is low on charge -->
-    <integer name="config_notificationsBatteryLowARGB">0xFFFF0000</integer>
-
-    <!-- Default value for led color when battery is medium charged -->
-    <integer name="config_notificationsBatteryMediumARGB">0xFFFFFF00</integer>
-
-    <!-- Default value for led color when battery is fully charged -->
-    <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
-
-    <!-- Default value for LED on time when the battery is low on charge in miliseconds -->
-    <integer name="config_notificationsBatteryLedOn">125</integer>
-
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">false</bool>
+    <bool name="config_intrusiveNotificationLed">true</bool>
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">false</bool>
-
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">false</bool>
+    <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Default value for LED off time when the battery is low on charge in miliseconds -->
-    <integer name="config_notificationsBatteryLedOff">2875</integer>
-
-    <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
-    <bool name="config_disableMenuKeyInLockScreen">false</bool>
+    <integer name="config_notificationsBatteryLedOff">12875</integer>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 zones as follows:
@@ -218,19 +124,6 @@
         <item>0</item>
     </integer-array>
 
-    <!-- Array of output values for keyboard backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-    </integer-array>
-
     <!-- Boolean indicating if current platform supports quick switch-on/off of
          Bluetooth Module -->
     <bool name="config_bluetooth_adapter_quick_switch">false</bool>
@@ -241,5 +134,11 @@
          The existence of this file will be used to determine in the
          legacy USB manager should be started. -->
     <string name="config_legacyUmsLunFile">/sys/devices/platform/usb_mass_storage/lun0/file</string>
+
+    <!-- If this is true, the screen will fade off. -->
+    <bool name="config_animateScreenLights">false</bool>
+
+    <!-- True will enable the electron beam screen-off animation. -->
+    <bool name="config_screenOffAnimation">true</bool>
 
 </resources>
